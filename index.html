@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            display: flex;
+            background-color:honeydew;
+        }
+
+        .blogs {
+            flex: 2.5;
+           
+        }
+
+        .blog {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 4px 4px 4px black;
+        }
+
+        .blog h2 {
+            color: #36c50b;
+            text-decoration: underline;
+            
+        }
+
+        .blog p {
+            color: #666;
+            font-family:sans-serif;
+            font-style: italic;
+
+        }
+
+        .highlights {
+            flex: 1;
+            background-color:whitesmoke;
+            padding: 10px;
+
+
+        }
+
+        .highlights h2 {
+            color: #333;
+        }
+
+        .highlights ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .highlights li {
+            color: #666;
+            margin-bottom: 5px;
+            font-style: italic;
+            font-weight: bold;
+            color:brown;        }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        const blogs = [
+            {
+                title: "Include a Variety of Fruits and Vegetables:",
+                content: "Fruits and vegetables are packed with vitamins, minerals, and antioxidants. Aim to include a colorful assortment of fruits and vegetables in your daily meals. They provide essential nutrients and help reduce the risk of chronic diseases.",
+                author: "John Doe"
+            },
+            {
+                title: "Choose Whole Grains:",
+                content: "Opt for whole grains like brown rice, whole wheat bread, and oats instead of refined grains. Whole grains are rich in fiber, vitamins, and minerals, and they help maintain stable blood sugar levels and promote digestive health.",
+                author: "Jane Will"
+            },
+            {
+                title: "Include Lean Protein Sources:",
+                content: "Lean proteins such as chicken, turkey, fish, tofu, and legumes are excellent sources of essential amino acids. They provide the building blocks for muscle growth and repair. Limit processed meats and opt for lean protein sources.",
+                author: "Xavier Johnson "
+            },
+            {
+                title: "Limit Added Sugars and Processed Foods:",
+                content: "Excessive consumption of added sugars and processed foods can contribute to weight gain and various health issues. Minimize your intake of sugary beverages, candies, desserts, and processed snacks. Opt for natural sweeteners like fruits or small amounts of honey or maple syrup.",
+                author: "Benjamin Thompson"
+            },
+            {
+                title: "Stay Hydrated:",
+                content: "Water is essential for overall health and aids in digestion, nutrient absorption, and temperature regulation. Aim to drink an adequate amount of water throughout the day. You can also include herbal teas or infused water for added flavor.",
+                author: "Olivia Wilson"
+            }
+        ]; 
+        const Blog = ({ title, content }) => (
+            <div className="blog">
+                <h2>{title}</h2>
+                <p>{content}</p>
+            </div>
+        );
+
+        const BlogList = () => (
+            <div className="blogs">
+                {blogs.map((blog, index) => (
+                    <Blog key={index} title={blog.title} content={blog.content} />
+                ))}
+            </div>
+        );
+        const HighlightList = () => (
+            <div className="highlights">
+                <h2>Highlights</h2>
+                <ul>
+                    {blogs.map((blog, index) => (
+                        <li key={index}>
+                            {blog.title} - {blog.author}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+        
+        ReactDOM.render(
+            <div className="container">
+                <BlogList />
+                <HighlightList />
+            </div>,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
